@@ -1,0 +1,33 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: webui
+  namespace: minio-ocp
+  labels:
+    app: minio
+spec:
+  host: webui-minio-ocp.apps.ocp.plxf9.sandbox1965.opentlc.com
+  to:
+    kind: Service
+    name: minio-webui
+    weight: 100
+  port:
+    targetPort: webui
+  wildcardPolicy: None
+---
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: s3
+  namespace: minio-ocp
+  labels:
+    app: minio
+spec:
+  host: s3-minio-ocp.apps.ocp.plxf9.sandbox1965.opentlc.com
+  to:
+    kind: Service
+    name: minio-api
+    weight: 100
+  port:
+    targetPort: api
+  wildcardPolicy: None

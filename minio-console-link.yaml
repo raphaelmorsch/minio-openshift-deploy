@@ -1,0 +1,11 @@
+apiVersion: console.openshift.io/v1
+kind: ConsoleLink
+metadata:
+  name: minio
+spec:
+  applicationMenu:
+    section: Storage
+    imageURL: https://static.cdnlogo.com/logos/m/74/minio_thumb.png
+  href: https://webui-minio-ocp.apps.ocp.plxf9.sandbox1965.opentlc.com
+  location: ApplicationMenu
+  text: MinIO
