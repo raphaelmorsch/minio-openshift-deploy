@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "minio.fullname" . }}
+  namespace: {{ .Values.namespace }}
+  annotations:
+    deployment.kubernetes.io/revision: '1'  
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ include "minio.fullname" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "minio.fullname" . }}
+    spec:
+      containers:
+      - name: minio
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        args: {{ toYaml .Values.minio.args | nindent 8 }}
+        env:
+        {{- range .Values.minio.extraEnv }}
+        - name: {{ .name }}
+          value: "{{ .value }}"
+        {{- end }}
+        ports:
+        - containerPort: {{ .Values.service.port }}
+        volumeMounts:
+        - name: data
+          mountPath: /data
+      volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: {{ include "minio.fullname" . }}

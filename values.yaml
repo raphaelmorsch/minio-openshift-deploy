@@ -1,0 +1,45 @@
+# Namespace
+namespace: minio
+
+# Image
+image:
+  repository: minio/minio
+  tag: RELEASE.2025-01-01T00-00-00Z
+  pullPolicy: IfNotPresent
+
+# Service
+service:
+  type: ClusterIP
+  port: 9000
+
+# Route
+route:
+  enabled: true
+  host: ""
+  tls: false
+
+# PVC
+persistence:
+  enabled: true
+  accessMode: ReadWriteOnce
+  size: 10Gi
+  storageClassName: ""
+
+# MinIO Args / Config
+minio:
+  # Exemplo para modo standalone
+  args: server /data
+  # Se quiser configurar múltiplos drives/host paths, etc
+  extraEnv: []
+  # Usuário / Senha (via Secret) ou gerado por Helm
+  rootUser: ""
+  rootPassword: ""
+
+# SCC Script
+scc:
+  enabled: false
+  scriptUser: ""
+
+# Replica Count
+replicaCount: 1
+

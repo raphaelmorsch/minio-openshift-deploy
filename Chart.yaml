@@ -1,0 +1,6 @@
+apiVersion: v2
+name: minio-openshift
+description: Helm chart para deploy de MinIO no OpenShift
+type: application
+version: 0.1.0
+appVersion: "RELEASE.2025-01-18T00-31-37Z"
