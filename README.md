@@ -43,7 +43,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: rb-minio
-  namespace: minio-ocp
+  namespace: <NOME_DO_NAMESPACE_DO_MINIO>
 subjects:
   - kind: ServiceAccount
     name: openshift-gitops-argocd-application-controller
