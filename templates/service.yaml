@@ -2,7 +2,6 @@ kind: Service
 apiVersion: v1
 metadata:
   name: minio-webui
-  namespace: minio-ocp
   labels:
     app: minio
 spec:
@@ -19,7 +18,6 @@ kind: Service
 apiVersion: v1
 metadata:
   name: minio-api
-  namespace: minio-ocp
   labels:
     app: minio
 spec:
