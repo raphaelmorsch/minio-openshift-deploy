@@ -43,3 +43,8 @@ scc:
 # Replica Count
 replicaCount: 1
 
+# Route
+route:
+  host: ""   # vazio => OpenShift gera
+
+
